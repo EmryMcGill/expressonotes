@@ -1,0 +1,96 @@
+.card_edit {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    max-width: 600px;
+    min-height: 400px;
+    max-height: 100%;
+    height: fit-content;
+    z-index: 3;
+    background-color: var(--bg-secondary);
+    border-radius: var(--br);
+    transition: transform 0.1s;
+}
+
+.note_container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0;
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
+
+.tag_container {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: auto;
+    padding: 0.5rem;
+}
+
+.tag {
+    background-color: var(--bg-primary);
+    padding: 0.5rem;
+    padding-top: 0.2rem;
+    padding-bottom: 0.2rem;
+    border-radius: var(--br);
+    font-weight: 200;
+}
+
+.input_title {
+    border: none !important;
+    padding: 0 !important;
+    font-size: 18px !important;
+    font-weight: 600;
+}
+
+.input_title:focus {
+    outline: none !important;
+}
+
+.input_note {
+    flex: 1;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    word-wrap: normal;
+    overflow-wrap: normal;
+}
+
+.input_note:hover {
+    cursor: text;
+}
+
+.input_note:focus {
+    outline: none;
+}
+
+.btn_action {
+    padding: 0.5rem;
+    border-radius: var(--br);
+    margin-left: auto;
+    font-size: 15px;
+}
+
+.btn_create {
+    background-color: var(--blue);
+    color: white;
+    margin-left: 0;
+}
+
+.btn_create:hover {
+    background-color: var(--blue-tint);
+}
+
+.input_tags {
+  padding: 0.1rem !important;
+  height: auto !important;
+  width: 100px;
+}
