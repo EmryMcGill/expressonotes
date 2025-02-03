@@ -1,3 +1,2 @@
-todo:
-- somehow after updating 
-- update logo to menas logo
+TODO:
+- deploy to VPS
