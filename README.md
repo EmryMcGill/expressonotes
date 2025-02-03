@@ -1,2 +1,3 @@
 TODO:
-- deploy to VPS
+- get it to work with backend on vps
+- make the logo look better
