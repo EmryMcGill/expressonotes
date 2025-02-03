@@ -1,8 +1,8 @@
 // package imports
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router";
 // page imports
-import Login from "./pages/login";
-import Signup from "./pages/signup";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
 import Landing from "./pages/Landing";
 import Home from "./pages/Home";
 
