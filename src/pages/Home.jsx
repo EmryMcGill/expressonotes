@@ -62,8 +62,7 @@ const Home = () => {
         // validate input
         if (title || body) {
             // create note
-            const tagNames = tags.map(tag => tag.title);
-            await createNote(title, body, tagNames);
+            await createNote(title, body, tags);
         }
         // close the new note card
         toggleNewNote();
