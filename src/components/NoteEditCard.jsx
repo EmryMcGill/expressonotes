@@ -32,10 +32,8 @@ const NoteEditCard = ({
     
         // Regex to find hashtags (#word)
         const tagMatchTitles = text.match(/#(\w+)/g)?.map(tag => tag.slice(1)) || [];
-        let tagMatches = [];
-        tagMatchTitles.forEach(tag => tagMatches.push({title: tag, key: Math.random()}));
         
-        setTags(tagMatches);
+        setTags([...tagMatchTitles]);
     };
 
     return (
@@ -47,8 +45,8 @@ const NoteEditCard = ({
                 </div>
                 
                 <div className={styles.tag_container}>
-                    {tags.map(tag => 
-                    <p className={styles.tag} key={tag.id ? tag.id : tag.key}>{tag.title}</p>
+                    {tags.map((tag, index) => 
+                    <p className={styles.tag} key={index}>{tag}</p>
                     )}
                     <button onClick={toggleEdit} className={styles.btn_action}>Cancel</button>
                     <button onClick={() => handleSubmit(title, inputNoteRef.current.innerText, tags)} className={`${styles.btn_action} ${styles.btn_create}`}>{doneLabel}</button>

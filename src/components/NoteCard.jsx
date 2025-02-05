@@ -23,8 +23,7 @@ const NoteCard = ({ title, tags, body, updateNote, deleteNote, id }) => {
     }
 
     const handleUpdateNote = async (title, body, tags) => {
-        const tagNames = tags.map(tag => tag.title);
-        await updateNote(id, title, body, tagNames);
+        await updateNote(id, title, body, tags);
         toggleEdit();
     }
 
