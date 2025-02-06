@@ -16,7 +16,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path='/' element={<Landing />} />
+        <Route path='/' element={user ? <Navigate to='/app' /> : <Landing />} />
         <Route path='/login' element={user ? <Navigate to='/app' /> : <Login />} />
         <Route path='/signup' element={user ? <Navigate to='/app' /> : <Signup />} />
         <Route path='/app' element={user ? <Home /> : <Navigate to='/login' />} />

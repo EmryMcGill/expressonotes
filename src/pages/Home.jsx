@@ -60,7 +60,7 @@ const Home = () => {
 
     const handleCreateNote = async (title, body, tags) => {
         // validate input
-        if (title || body) {
+        if (title || body.trim()) {
             // create note
             await createNote(title, body, tags);
         }
@@ -87,7 +87,7 @@ const Home = () => {
                 <input value={searchVal} onChange={(e) => setSearchVal(e.target.value)} className={styles.input_search} type="text" placeholder="Search notes" />
             </div>
 
-            {newNote ? <NoteEditCard handleSubmit={handleCreateNote} toggleEdit={toggleNewNote} doneLabel='Create' /> : '' }
+            {newNote ? <NoteEditCard handleSubmit={handleCreateNote} toggleEdit={toggleNewNote} doneLabel='Create' activeTag={activeTag} /> : '' }
 
             <div className={`${styles.note_container} ${menu ? styles.note_container_open : ''}`}>
                 {notes.filter(note => {

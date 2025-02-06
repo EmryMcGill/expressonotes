@@ -25,7 +25,7 @@ const SideMenu = ({ menu, toggleMenu, handleLogout, tags, toggleActiveTag, toggl
                 <div style={{width: "100%"}}>
                     <button onClick={() => toggleActiveTag(null)} className={`${styles.btn_tag} ${!activeTag ? styles.btn_tag_active : ''}`}>All Notes</button>
                     {tags.map((tag, index) => 
-                    <button onClick={() => toggleActiveTag(tag)} className={`${styles.btn_tag} ${activeTag === tag.id ? styles.btn_tag_active : ''}`} key={index}>{tag}</button>
+                    <button onClick={() => toggleActiveTag(tag)} className={`${styles.btn_tag} ${activeTag === tag ? styles.btn_tag_active : ''}`} key={index}>{tag}</button>
                     )}
                 </div>
 

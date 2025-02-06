@@ -58,7 +58,7 @@
 }
 
 .btn_tag:hover {
-    background-color: var(--bg-primary);
+    background-color: #f1f3f6;
     border-radius: var(--br);
 }
 
@@ -70,6 +70,7 @@
 
 .btn_tag_active:hover {
     font-size: 16px;
+    background-color: var(--bg-primary);
 }
 
 .btn_logout {

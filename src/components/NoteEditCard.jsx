@@ -8,11 +8,12 @@ const NoteEditCard = ({
     defaultTitle, 
     defaultBody, 
     defaultTags,
-    doneLabel }) => {
+    doneLabel,
+    activeTag }) => {
 
     // state
     const [title, setTitle] = useState(defaultTitle); 
-    const [tags, setTags] = useState(defaultTags ? [...defaultTags] : []);
+    const [tags, setTags] = useState(defaultTags ? [...defaultTags] : activeTag ? [activeTag] : []);
 
     // hooks
     const inputNoteRef = useRef();
@@ -20,9 +21,18 @@ const NoteEditCard = ({
     // functions
 
     const handleKeyDownTitle = (e) => {
-        if (e.key === 'Enter') {
+        if ((e.ctrlKey || e.metaKey) && e.key === "Enter") {
+            handleSubmit(title, inputNoteRef.current.innerText, tags);
+        }
+        else if (e.key === 'Enter') {
             e.preventDefault();
             inputNoteRef.current?.focus();
+        }
+    }
+
+    const handleCtlEnter = (e) => {
+        if ((e.ctrlKey || e.metaKey) && e.key === "Enter") {
+            handleSubmit(title, inputNoteRef.current.innerText, tags);
         }
     }
 
@@ -41,7 +51,7 @@ const NoteEditCard = ({
             <div className={`${styles.card_edit}`}>
                 <div className={styles.note_container}>
                     <input defaultValue={title} autoFocus onChange={(e) => setTitle(e.target.value)} onKeyDown={handleKeyDownTitle} type='text' className={styles.input_title} placeholder='title' />
-                    <p dangerouslySetInnerHTML={{__html: defaultBody}} onInput={handleDetectTags} ref={inputNoteRef} className={styles.input_note} contentEditable="true"></p>
+                    <p onKeyDown={handleCtlEnter} dangerouslySetInnerHTML={{__html: defaultBody ? defaultBody : activeTag ? `<br><br>#${activeTag}` : ''}} onInput={handleDetectTags} ref={inputNoteRef} className={styles.input_note} contentEditable="true"></p>
                 </div>
                 
                 <div className={styles.tag_container}>
