@@ -4,7 +4,13 @@
 
 .top_container {
     display: flex;
-    padding: 1rem;
+    padding: 0.5rem;
+    padding-left: 1rem;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    background-color: var(--bg-primary);
+    border-bottom: 1px solid lightgray;
 }
 
 .input_search {
@@ -15,6 +21,7 @@
     margin-left: auto;
     margin-right: auto;
     background-color: lightgrey;
+    position: relative;
 }
 
 .btn_new_note_container {

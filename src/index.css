@@ -88,10 +88,12 @@ hr {
 button {
   border: none;
   font-family: var(--font);
+  background-color: var(--bg-primary);
 }
 
 button:hover {
   cursor: pointer;
+  background-color: var(--bg-primary-tint);
 }
 
 .btn_large {
@@ -111,6 +113,11 @@ button:hover {
   height: fit-content;
   padding: 0.3rem;
   border-radius: var(--br);
+  background-color: transparent;
+}
+
+.btn_icon:hover {
+  background-color: var(--bg-primary-tint);
 }
 
 .input_label {
@@ -139,7 +146,8 @@ input[type="text"]:focus,
 input[type="email"]:focus,
 input[type="password"]:focus {
   outline: none;
-  outline: solid 2px #6e6e6e;
+  border-radius: var(--br);
+  box-shadow: 0 0 0 2px #6e6e6e;
 }
 
 a {

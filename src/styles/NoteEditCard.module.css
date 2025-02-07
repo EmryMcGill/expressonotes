@@ -27,6 +27,10 @@
     scrollbar-width: none;
 }
 
+.note_container::-webkit-scrollbar {
+    display: none;
+}
+
 .tag_container {
     display: flex;
     gap: 0.5rem;
@@ -53,15 +57,21 @@
 }
 
 .input_title:focus {
-    outline: none !important;
+    box-shadow: none !important;
 }
 
 .input_note {
     flex: 1;
     overflow-y: scroll;
     scrollbar-width: none;
-    word-wrap: normal;
-    overflow-wrap: normal;
+    overflow-x: hidden;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+}
+
+.input_note::-webkit-scrollbar {
+    display: none;
 }
 
 .input_note:hover {
