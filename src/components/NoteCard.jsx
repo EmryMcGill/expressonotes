@@ -4,12 +4,14 @@ import styles from '../styles/NoteCard.module.css';
 // component imports
 import { PiTrash } from "react-icons/pi";
 import NoteEditCard from './NoteEditCard';
+import DeleteModal from './DeleteModal';
 
 
 const NoteCard = ({ title, tags, body, updateNote, deleteNote, id }) => {
 
     // state
     const [edit, setEdit] = useState(false);
+    const [del, setDel] = useState(false);
 
     // functions
 
@@ -43,7 +45,10 @@ const NoteCard = ({ title, tags, body, updateNote, deleteNote, id }) => {
                     {tags.map((tag, index) => 
                         <p className={styles.tag} key={index}>{tag}</p>
                     )}
-                    <button onClick={handleDeleteNote} className={styles.btn_icon}>
+                    <button onClick={(e) => {
+                        e.stopPropagation();
+                        setDel(true);
+                    }} className={styles.btn_icon}>
                         <PiTrash />
                     </button>
                 </div>
@@ -55,6 +60,8 @@ const NoteCard = ({ title, tags, body, updateNote, deleteNote, id }) => {
                         defaultBody={body}
                         defaultTags={tags}
                         doneLabel='Done' /> : '' }
+
+            {del ? <DeleteModal handleDelete={handleDeleteNote} handleCancel={() => setDel(false)} /> : ''}
         </div>
     );
 }

@@ -35,6 +35,7 @@
 }
 
 .btn_newnote {
+    display: none;
     margin-top: 1rem;
     background-color: var(--blue);
     color: var(--bg-secondary);
@@ -57,9 +58,11 @@
     font-size: 16px;
 }
 
-.btn_tag:hover {
-    background-color: #f1f3f6;
-    border-radius: var(--br);
+@media (hover:hover) {
+    .btn_tag:hover {
+        background-color: #f1f3f6;
+        border-radius: var(--br);
+    }
 }
 
 .btn_tag_active {
@@ -68,9 +71,11 @@
     font-size: 16px;
 }
 
-.btn_tag_active:hover {
-    font-size: 16px;
-    background-color: var(--bg-primary);
+@media (hover:hover) {
+    .btn_tag_active:hover {
+        font-size: 16px;
+        background-color: var(--bg-primary);
+    }
 }
 
 .btn_logout {
@@ -81,12 +86,18 @@
     border-radius: var(--br);
 }
 
-.btn_logout:hover {
-    background-color: var(--bg-primary-tint);
+@media (hover:hover) {
+    .btn_logout:hover {
+        background-color: var(--bg-primary-tint);
+    }
 }
 
 @media (min-width: 620px) {
     .overlay {
         display: none;
+    }
+
+    .btn_newnote {
+        display:block;
     }
 }

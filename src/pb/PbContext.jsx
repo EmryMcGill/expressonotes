@@ -18,6 +18,8 @@ export const PbProvider = ({ children }) => {
     const [notes, setNotes] = useState([]);
     // define tags
     const [tags, setTags] = useState([]);
+    // define loading flag
+    const [loading, setLoading] = useState(true);
 
     const handleTempNotes = async () => {
         let tempNotes = [];
@@ -51,6 +53,7 @@ export const PbProvider = ({ children }) => {
                 const { tempNotes, deletedNotes } = await handleTempNotes();
                 refreshTags([...tempNotes, ...res.filter(note => !tempNotes.some(note1 => note1.id === note.id) && !deletedNotes.some(note1 => note1.id === note.id))]);
                 setNotes([...tempNotes, ...res.filter(note => !tempNotes.some(note1 => note1.id === note.id) && !deletedNotes.some(note1 => note1.id === note.id))]);
+                setLoading(false);
             }
             catch (err) {
                 console.log(err);
@@ -251,6 +254,7 @@ export const PbProvider = ({ children }) => {
             updateNote,
             deleteNote,
             tags,
+            loading
          }}>
         {children}
         </PbContext.Provider>

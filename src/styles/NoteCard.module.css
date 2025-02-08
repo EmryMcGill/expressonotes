@@ -70,8 +70,10 @@
     font-size: 16px;
 }
 
-.btn_icon:hover {
-    background-color: var(--bg-primary);
+@media (hover:hover) {
+    .btn_icon:hover {
+        background-color: var(--bg-primary);
+    }
 }
 
 

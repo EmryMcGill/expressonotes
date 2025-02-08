@@ -95,8 +95,10 @@
     margin-left: 0;
 }
 
-.btn_create:hover {
-    background-color: var(--blue-tint);
+@media (hover:hover) {
+    .btn_create:hover {
+        background-color: var(--blue-tint);
+    }
 }
 
 .input_tags {
