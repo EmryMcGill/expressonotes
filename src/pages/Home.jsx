@@ -32,6 +32,8 @@ const Home = () => {
     } = usePocket();
 
     useEffect(() => {
+        // fetch notes
+
         if (window.innerWidth < 650) {
             // start w menu closed
             setMenu(false);

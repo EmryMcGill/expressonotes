@@ -8,6 +8,9 @@ import styles from "../styles/Login.module.css";
 // API imports
 import { usePocket } from "../pb/PbContext"; 
 
+// asset import
+import logo from '../assets/logo.svg';
+
 
 const Login = () => {
     // hooks
@@ -53,7 +56,7 @@ const Login = () => {
     return (
         <div className={`${styles.page} page`}>
             <div className={styles.content}>
-                <h1>Expresso Notes ☕️</h1>
+                <h1>Expresso Notes <img className={styles.logo} src={logo} alt="logo" /></h1>
                 <div className={`card`}>
                     <h1 style={{width: "100%"}}>Login</h1>
                     <button className={`${styles.btn_google} btn_large`}>

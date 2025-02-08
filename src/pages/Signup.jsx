@@ -18,6 +18,7 @@ const Signup = () => {
     // local state
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState(''); 
+    const [passwordConf, setPasswordConf] = useState(''); 
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);   
 
@@ -29,7 +30,7 @@ const Signup = () => {
         setLoading(true);
 
         // basic validation
-        if (!email || !password) {
+        if (!email || !password || !passwordConf) {
             setError("Please fill in all fields");
             setLoading(false);
             return;
@@ -39,7 +40,7 @@ const Signup = () => {
         const data = {
             email: email,
             password: password,
-            passwordConfirm: password
+            passwordConfirm: passwordConf
         }
         const res = await signup(data);
 
@@ -47,7 +48,7 @@ const Signup = () => {
 
         if (res) {
             // error occured
-            setError(res.status);
+            setError(res.data.message);
             console.log(res);
             return;
         }
@@ -91,6 +92,16 @@ const Signup = () => {
                             placeholder="Enter your password..."
                             onChange={(e) => {
                                 setPassword(e.target.value);
+                                setError('');
+                            }}
+                            required />
+
+                        <label htmlFor="password" className="input_label">Retype your password</label>
+                        <input 
+                            type="password" 
+                            placeholder="Enter your password again..."
+                            onChange={(e) => {
+                                setPasswordConf(e.target.value);
                                 setError('');
                             }}
                             required />

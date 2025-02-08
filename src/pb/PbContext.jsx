@@ -46,20 +46,20 @@ export const PbProvider = ({ children }) => {
         setTags(uniqueTags);
     }
 
-    useEffect(() => {
-        const getNotes = async () => {
-            try {
-                const res = await pb.collection('notes').getFullList();
-                const { tempNotes, deletedNotes } = await handleTempNotes();
-                refreshTags([...tempNotes, ...res.filter(note => !tempNotes.some(note1 => note1.id === note.id) && !deletedNotes.some(note1 => note1.id === note.id))]);
-                setNotes([...tempNotes, ...res.filter(note => !tempNotes.some(note1 => note1.id === note.id) && !deletedNotes.some(note1 => note1.id === note.id))]);
-                setLoading(false);
-            }
-            catch (err) {
-                console.log(err);
-            }
+    const getNotes = async () => {
+        try {
+            const res = await pb.collection('notes').getFullList();
+            const { tempNotes, deletedNotes } = await handleTempNotes();
+            refreshTags([...tempNotes, ...res.filter(note => !tempNotes.some(note1 => note1.id === note.id) && !deletedNotes.some(note1 => note1.id === note.id))]);
+            setNotes([...tempNotes, ...res.filter(note => !tempNotes.some(note1 => note1.id === note.id) && !deletedNotes.some(note1 => note1.id === note.id))]);
+            setLoading(false);
         }
+        catch (err) {
+            console.log(err);
+        }
+    }
 
+    useEffect(() => {
         // listen for changes to the authStore state
         const unsubscribe = pb.authStore.onChange(record => {
             setUser(record)
@@ -95,7 +95,7 @@ export const PbProvider = ({ children }) => {
             pb.collection("notes").unsubscribe("*");
             unsubscribe();
         };
-    }, []);
+    }, [pb.authStore.record]);
 
     // AUTH
 
