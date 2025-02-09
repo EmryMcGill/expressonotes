@@ -115,7 +115,26 @@ export const PbProvider = ({ children }) => {
     const signup = async (data) => {
         // attempt to register user
         try {
-            await pb.collection("users").create(data);
+            const res = await pb.collection("users").create(data);
+
+            // log in user
+            await login(data.email, data.password);
+
+            // create a demo note    
+            await pb.collection('notes').create({
+                title: "Install to your iPhone",
+                body: "To install this app as a PWA onto your phone, press the share button at the bottom of the screen, then scroll down and click on add to home screen.",
+                tags: [],
+                user: res.id
+            });
+                    
+            await pb.collection('notes').create({
+                title: "Welcome!",
+                body: "Here is some helpful tips:<br>1. you can add tags to your notes by writing a # followed by whatever you want the tag to be called.<br><br>here's an example<br>#exampletag<br><br>2. when your finished typing your note, create it using the shortcut<br>(ctl + enter)",
+                tags: ["exampletag"],
+                user: res.id
+            });
+            
             return null;
         }
         catch (err) {
