@@ -37,27 +37,14 @@
 .btn_new_note:hover {
     background-color: var(--blue-tint);
 }
-/*
-.note_container {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-    height: fit-content;
-    padding-top: 1rem;
-    padding-left: 2rem;
-    padding-right: 2rem;
-    padding-bottom: 2rem;
-    transition: all var(--transition-speed);
-}
-*/
 
 .note_container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 1rem;
     padding-top: 1rem;
-    padding-left: 2rem;
-    padding-right: 2rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
     padding-bottom: 2rem;
 }
 
@@ -88,8 +75,6 @@
 @media (max-width: 620px) {
     .note_container {
         margin-left: 0px !important;
-        padding-left: 1rem;
-        padding-right: 1rem;
         justify-content: center;
     }
 
