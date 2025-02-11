@@ -12,7 +12,7 @@ import { usePocket } from "../pb/PbContext";
 const Signup = () => {
     // hooks
     const navigate = useNavigate();
-    const { signup } = usePocket();
+    const { signup, googleAuth } = usePocket();
 
 
     // local state
@@ -65,7 +65,7 @@ const Signup = () => {
                 <div className={`card`}>
                     <h1 style={{width: "100%"}}>Sign up</h1>
                     
-                    <button className={`${styles.btn_google} btn_large`}>
+                    <button onClick={googleAuth} className={`${styles.btn_google} btn_large`}>
                         Continue with Google
                     </button>
 

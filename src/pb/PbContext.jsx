@@ -99,6 +99,10 @@ export const PbProvider = ({ children }) => {
 
     // AUTH
 
+    const googleAuth = async () => {
+        const res = await pb.collection('users').authWithOAuth2({ provider: 'google' });
+    }
+
     const login = async (email, pass) => {
         // attempt to login user
         try {
@@ -265,6 +269,7 @@ export const PbProvider = ({ children }) => {
     return (
         <PbContext.Provider value={{ 
             user,
+            googleAuth,
             login,
             logout,
             signup,
